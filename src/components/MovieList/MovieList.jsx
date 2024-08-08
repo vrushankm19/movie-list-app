@@ -17,6 +17,7 @@ const MovieList = ({ selectedGenres }) => {
       setLoading(true);
 
       try {
+        // Loop to fetch multiple pages of movies
         for (let page = 1; page <= totalPages; page++) {
           const response = await axios.get('https://api.themoviedb.org/3/discover/movie', {
             params: {
@@ -36,7 +37,7 @@ const MovieList = ({ selectedGenres }) => {
       } catch (error) {
         console.error('Error fetching data from TMDB:', error);
       } finally {
-        setLoading(false);
+        setLoading(false); // Set loading state to false after fetching
       }
     };
 
@@ -72,7 +73,7 @@ const MovieList = ({ selectedGenres }) => {
     }, {});
   };
 
-  const groupedMovies = groupMoviesByYear(movies);
+  const groupedMovies = groupMoviesByYear(movies); // Group movies by year
 
   return (
     <div className='tmdb-body'>
