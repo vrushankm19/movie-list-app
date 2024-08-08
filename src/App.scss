@@ -1,0 +1,39 @@
+:root {
+  --primary-font: "Archivo", sans-serif;
+}
+
+body, html, * {
+  font-family: var(--primary-font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #121212;
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.btn-primary{
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #484848;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  white-space: nowrap;
+    &:hover,
+    &.active{
+      background-color: #ef283b;
+    // color: #000;
+  }
+}

@@ -1,0 +1,44 @@
+.tmdb-head{
+  background-color: #242424;
+  padding-block: 30px;
+  // position: sticky;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // z-index: 100;
+
+  &-flex{
+    &-img{
+        width: 200px;
+    }
+  }
+  &-btn{
+    margin-top: 10px;
+    padding-bottom: 5px;
+    &-flex{
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+    .tmdb-head{
+      padding-block: 20px;
+      &-flex{
+        &-img{
+            width: 124px;
+        }
+      }
+      &-btn{
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        margin-top: 20px;
+        &-flex{
+          flex-wrap:nowrap;
+        }
+        }
+    }
+}
