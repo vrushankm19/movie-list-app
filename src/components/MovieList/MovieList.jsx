@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import Loader from '../Futures/Loader';
+import Loader from '../Features/Loader';
 import './MovieList.scss';
 
 const MovieList = ({ selectedGenres }) => {
