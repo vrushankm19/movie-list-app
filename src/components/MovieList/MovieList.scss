@@ -13,6 +13,7 @@
         &-item{
             position: relative;
             overflow: hidden;
+            min-height: 327px;
             &::before{
                 content: '';
                 position: absolute;

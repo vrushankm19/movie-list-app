@@ -9,8 +9,10 @@ const MovieList = ({ selectedGenres }) => {
   const [currentYear, setCurrentYear] = useState(2012);
   const [years, setYears] = useState([2012]);
   const [hasMore, setHasMore] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
 
   const fetchMoviesForYear = useCallback(async (year) => {
+    setIsFetching(true); // Start loading
     try {
       const response = await axios.get('https://api.themoviedb.org/3/discover/movie', {
         params: {
@@ -30,6 +32,8 @@ const MovieList = ({ selectedGenres }) => {
       }));
     } catch (error) {
       console.error('Error fetching data from TMDB:', error);
+    } finally {
+      setIsFetching(false); 
     }
   }, [selectedGenres]);
 
@@ -40,6 +44,7 @@ const MovieList = ({ selectedGenres }) => {
   const fetchMoreData = () => {
     const nextYear = currentYear + 1;
     const prevYear = currentYear - 1;
+
     if (nextYear <= new Date().getFullYear()) {
       setCurrentYear(nextYear);
       fetchMoviesForYear(nextYear);
@@ -60,9 +65,9 @@ const MovieList = ({ selectedGenres }) => {
           dataLength={years.length}
           next={fetchMoreData}
           hasMore={hasMore}
-          loader={<Loader />}
-          scrollThreshold={0.9} // Load more data when the scroll position is 90% from the top or bottom
-          style={{ overflow: 'hidden' }} // To prevent default scroll behavior
+          loader={isFetching ? <Loader /> : null} 
+          scrollThreshold={0.9}
+          style={{ overflow: 'hidden' }}
         >
           {years.map(year => (
             <div key={year}>
@@ -81,6 +86,7 @@ const MovieList = ({ selectedGenres }) => {
               </div>
             </div>
           ))}
+          {isFetching && <Loader />} {/* Loader for scrolling */}
         </InfiniteScroll>
       </div>
     </div>
