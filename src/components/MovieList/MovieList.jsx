@@ -26,7 +26,7 @@ const MovieList = ({ selectedGenres }) => {
           sort_by: 'popularity.desc', // Sort movies by popularity
           primary_release_year: year, 
           vote_count_gte: 100,
-          page: 1,
+          page: 1, //  First Page 
           with_genres: selectedGenres.length > 0 ? selectedGenres.join(',') : undefined // Filter by selected genres if any are chosen  
         }
       });
@@ -67,7 +67,6 @@ const MovieList = ({ selectedGenres }) => {
       fetchMoviesForYear(prevYear);
       setYears((prevYears) => [prevYear, ...prevYears]); // Add the year at the beginning of the list
     } 
-    // If there are no more years to fetch, stop the infinite scroll.
     else {
       setHasMore(false);
     }
